@@ -1,0 +1,189 @@
+/*  Kode Css Untuk Checkbox setelah di pilih */
+.custom_checkbox .custom-control-label::before {
+  border-radius: 4px;
+  width:25px;
+  height:19px;
+  box-shadow: 2px 2px 0px rgb(111, 64, 64);
+}
+
+.custom_checkbox .custom-control-input:checked ~ .custom-control-label::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%237C7BAD' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  border-radius: 4px;
+  width:25px;
+  height:19px;
+}
+.custom_checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
+  border-color: #27ba0a;
+  background-color: #e9ecef;
+  box-shadow: 2px 2px 0px rgb(111, 64, 64);
+  animation: jelly 0.6s ease;
+}
+
+.custom_checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%237C7BAD' d='M0 2h4'/%3e%3c/svg%3e");
+  border-radius: 4px;
+  width:25px;
+  height:19px;
+  box-shadow: 2px 2px 0px rgb(111, 64, 64);
+}
+ 
+.custom_checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
+  background-color: rgba(10, 240, 41, 0.5);
+  box-shadow: 2px 2px 0px rgb(111, 64, 64);
+}
+
+.custom_checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
+  background-color: rgba(10, 240, 41, 0.5);
+  box-shadow: 2px 2px 0px rgb(111, 64, 64);
+}
+
+/* Css Untuk Field Keterangan */
+.keterangan {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+}
+
+.keterangan:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Kode Radio Button Untuk Field Putaran */
+.radio-putaran {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  margin-right: 15px;
+
+  input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .radio-putaran::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 20px; 
+    height: 20px; 
+    background-color: #eee;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  input[type="radio"]:checked + .radio-putaran::before {
+    background-color: #3498DB;
+    border-color: #3498DB; 
+  }
+
+  /* Gaya tampilan label radio */
+  .radio-putaran label {
+    position: relative;
+    z-index: 1;
+    line-height: 20px; /* Sesuaikan dengan ukuran lingkaran radio */
+  }
+}
+
+
+/* Kode Css Field Deret */
+.input {
+  max-width: 190px;
+  border-radius: 10px;
+  outline: 2px solid #FEBF00;
+  border: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #e2e2e2;
+  outline-offset: 3px;
+  padding: 10px 1rem;
+  transition: 0.25s;
+}
+
+.input:focus {
+  outline-offset: 5px;
+  background-color: #fff
+}
+
+/* Kode Css Untuk Button Line Mesin */
+
+.line-button {
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.6em 1.5em;
+ }
+ 
+ .line-button:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+ }
+ 
+ @keyframes pulse512 {
+  0% {
+   box-shadow: 0 0 0 0 #05bada66;
+  }
+ 
+  70% {
+   box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+ 
+  100% {
+   box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+ }
+
+ .radio-line {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.radio-line label {
+  flex: 1 0 45%; /* Merubah lebar menjadi 45% */
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-size: 20px;
+  border: 2px solid #13c1a6;
+  background-color: #ffffff;
+  border-radius: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+
+/* Gaya saat radio button aktif dipilih */
+.radio-line input:checked + label {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #3498db;
+}
+
+
+/* Kustomisasi warna teks pada radio button */
+.radio-line input {
+  margin-right: 5px;
+}
+
+/* Warna teks saat radio button aktif dipilih */
+.custom-control .custom-radio .o_radio_item input:checked {
+  color: #3498db;
+}
+
+
+.table { page-break-after:auto }
+.tr    { page-break-inside:avoid; page-break-after:auto }
+.td    { page-break-inside:avoid; page-break-after:auto }
+.thead { display: table-row-group; }
+.tfoot { display:table-footer-group }

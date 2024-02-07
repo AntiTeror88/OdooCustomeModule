@@ -1,0 +1,146 @@
+
+/* Radio Mesin */
+    .o_form_view .radio-mesin .o_field_widget {
+        margin: 5px -9px 0px 0px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        height: auto; 
+    }
+    .o_form_view .o_group .radio-memsin .o_field_widget {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .o_form_view .o_group.o_inner_group > tbody > tr > td.o_td_label .radio-mesin{
+        width: 0%;
+        padding: 0 15px 0 0;
+        min-width: 150px;
+        display:none
+    }
+
+    .radio-mesin .o_field_widget.o_field_radio.o_horizontal .o_radio_item {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background: #0d49b6;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        font-size: 18px;
+        white-space: nowrap;
+        height: 25px;
+        width: 35%;
+        color: white;
+    }
+
+    .radio-mesin .custom-radio .custom-control-label::after {
+        border-radius: 50%;
+        height: 15px;
+        width: 15px;
+        left: px;
+        top: calc(50% - 8px);
+        border: 2px solid #ffffff;
+        display: none
+        
+    }
+    .radio-mesin .custom-radio .custom-control-label::before {
+        border-radius: 50%;
+        height: 15px;
+        width: 15px;
+        left: -17px;
+        top: calc(50% - 7px);
+        background: #4eb42a;
+        transform: scale(1);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+
+    .radio-mesin .o_radio_item [widget="radio"] {
+        display: none;
+    }
+
+    .radio-mesin [type="radio"]:checked ~ label {
+        border-color: #080652;
+    }
+
+    .radio-mesin [type="radio"]:checked ~ label::before {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+
+    .o_form_view .cek-box-rusak .o_horizontal_separator {
+        color: #7C7BAD;
+        font-weight: bold;
+        text-align: center;
+    }
+
+.radio-input {
+    display: flex;
+    flex-direction: row;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .radio-input input[type="radio"] {
+    display: none;
+  }
+  
+  .radio-input label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #212121;
+    border-radius: 5px;
+    margin-right: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .radio-input label:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .radio-input input[type="radio"]:checked + label:before {
+    background-color: green;
+    top: 0;
+  }
+  
+  .radio-input input[type="radio"]:checked + label {
+    background-color: royalblue;
+    color: #fff;
+    border-color: rgb(129, 235, 129);
+    animation: radio-translate 0.5s ease-in-out;
+  }
+  
+  @keyframes radio-translate {
+    0% {
+      transform: translateX(0);
+    }
+  
+    50% {
+      transform: translateY(-10px);
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+  }
+  

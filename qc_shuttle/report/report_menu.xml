@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="action_report_qc_shuttle" model="ir.actions.report">
+            <field name="name">Report QC Shuttle</field>
+            <field name="model">snap.qc</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">qc_shuttle.report_qc_shuttle</field>
+            <field name="report_file">qc_shuttle.report.qc_shuttle_test</field>
+            <field name="print_report_name">'REPORT - %s' % object.name</field>
+            <field name="binding_model_id" ref="model_snap_qc"/>
+            <field name="binding_type">report</field>
+        </record>
+     </data> 
+</odoo>  

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<template id="report_qc_shuttle">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align: center; text-decoration:underline; border-bottom: 1px solid #000; font-weight:bold;"> CHECKLIST SNAP DIVISI SHUTTLE</h2>
+                        <h5 style="text-alignt:left; font-size:18px; font-weight:bold; font-variant: small-caps;"> Pembagi : <span t-field="doc.total_mesin_deret"/> Mesin (Total Mesin Shuttle)</h5>
+                        <div style=" background-color:  #3498DB; ">
+                                <h2 style="color: #fff;"> <span t-field="doc.name"/></h2>
+                            <div style=" background-color:  #3498DB;">
+                                <div class="row mt33 mb33">
+                                        <div class="col-3">
+                                            <font color="#fff">
+                                                <strong>TANGGAL SNAP :</strong>
+                                                <p t-field="doc.tanggal_snap"/>
+                                            </font>
+                                        </div>
+                                        <div class="col-3">
+                                            <font color="#fff">
+                                                <strong>SHIFT :</strong>
+                                                <p t-field="doc.shift"/>
+                                            </font>
+                                        </div>
+                                        <div class="col-3">
+                                            <font color="#fff">
+                                                <strong>PUTARAN :</strong>
+                                                <p t-field="doc.putaran"/>
+                                            </font>
+                                        </div>
+                                        <div class="col-3">
+                                            <font color="#fff">
+                                                <strong>OPERATOR :</strong>
+                                                <p t-field="doc.operator"/>
+                                            </font>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:10px;">
+                        <table class="table table-sm table-striped table-bordered">
+                            <thead style="display:table-row-group;">
+                                <tr>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">LINE</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">NOMOR MESIN</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">PUTUS LUSI</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">PUTUS PAKAN</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">BENDERA MERAH</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">AMBROL</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">DEDEL</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">HABIS BEAM</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">NAIK BEAM</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">OVER HOULE</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">PREVENTIF</th>
+                                    <th style="background-color:#3498DB; !important;color:#FFF !important;">LAIN LAIN</th>
+                                </tr>
+                            </thead>
+                            <tbody class="snap_tbody">
+                                <tr t-foreach="doc.snap_qc_line" t-as="l" style="text-align:center;">
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.deret_value"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="l.mesin_produksi_id"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.putus_lusi"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.putus_pakan"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.bendera_merah"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.ambrol"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.dedel"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.hb"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.naik_beam"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.oh"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" t-att-checked="l.preventif"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="l.lain_lain"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="tabel table-sm table-dark table-bordered" style="display:table-row-group;">
+                                <tr>
+                                    <td colspan="2" style="background-color:#3498DB; !important;color:#FFF !important;">JUMLAH SNAP</td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_putus_lusi"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_putus_pakan"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_bendera_merah"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_ambrol"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_dedel"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_hb"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_naik_beam"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_oh"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_preventif"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="doc.total_lain_lain"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="background-color:#3498DB; !important;color:#FFF !important;">RATA-RATA</td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_putus_lusi, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_putus_pakan, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_bendera_merah, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_ambrol, 2) "/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_dedel, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_hb, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_naik_beam, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_oh, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_preventif, 2)"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-esc="round(doc.rata_rata_lain_lain, 2)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="background-color:#b91b1b; !important;color:#FFF !important;">TOTAL MESIN STOP</td>
+                                    <td style="text-align:center; background-color:#b91b1b;">
+                                        <span t-field="doc.total_snap"/> Mesin
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="background-color:#0e9f26; !important;color:#FFF !important;">TOTAL MESIN JALAN</td>
+                                    <td style="text-align:center; background-color:#0e9f26;">
+                                        <span t-field="doc.total_mesin_jalan"/> Mesin
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="background-color:#b91b1b; !important;color:#FFF !important;">PRESENTASI MESIN STOP (%)</td>
+                                    <td style="text-align:center; background-color:#b91b1b;">
+                                        <span t-esc="round(doc.presentasi_mesin_mati, 2)"/> %%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="background-color:#0e9f26; !important;color:#FFF !important;">PRESENTASI MESIN JALAN (%)</td>
+                                    <td style="text-align:center; background-color:#0e9f26;">
+                                        <span t-esc="round(doc.presentasi_mesin_jalan, 2)"/> %%
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                </div>
+                <xpath expr="//p[@t-field='o.notes']" position="after">
+                    <div class="last-page" style="position:relative;font-size:12px;margin-top:100px;">
+                    <table>
+                        <tr>
+                            <td style="line-height: 1.6;" width="85%">
+                                <br/><br/><br/>
+                                <strong>SPV SHIFT</strong>
+                                <br/><br/><br/><br/> <br/><br/><br/>
+                                (..................................)
+                                <br/>
+                                    <br/> 
+                            </td>
+                            <td style="text-align:left" width="20%">
+                                <strong>Purworejo, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')" /></strong>
+                                <br/><br/><br/>
+                                <strong>OPERATOR QC SHUTTLE</strong>
+                                <br/><br/><br/><br/> <br/><br/><br/>
+                                ( <span  t-field="doc.operator"/> )
+                                <br/>
+                                    <br/>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </xpath>                
+            </div>
+        </t>
+        </t>       
+    </t>
+</template>
+
+</odoo>

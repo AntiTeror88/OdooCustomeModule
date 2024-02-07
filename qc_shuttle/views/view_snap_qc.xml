@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data> 
+<!--Tree View -->
+<record id="snap_qc_tree" model="ir.ui.view">
+<field name="name">snap.qc.tree</field>
+<field name="model">snap.qc</field>
+<field name="type">tree</field>
+<field name="arch" type="xml">
+    <tree decoration-success="state == 'done'" decoration-danger="state == 'cancel'">
+        <field name="priority" optional="show" widget="priority" nolabel="1"/>
+        <field name="name" decoration-bf="1"/>
+        <field name="operator" decoration-bf="1" widget="many2one_avatar_employee"/>
+        <field name="shift" decoration-bf="1"/>
+        <field name="putaran" widget="badge"/>
+        <field name="tanggal_snap" decoration-success="state == 'done'" decoration-danger="state == 'cancel'"/>
+        <field name="total_snap" widget="badge" decoration-warning="1" decoration-bf="1"/>
+        <field name="date_planned_finished" attrs="{'invisible': [('state', '!=', 'done')]}" widget="remaining_days" decoration-bf="1"  decoration-success="state == 'done'"  decoration-danger="state == 'cancel'"/>
+        <field name="state" optional="show" widget="badge" decoration-success="state == 'done'"  decoration-muted="state =='draft'" decoration-danger="state == 'cancel'" decoration-info="state == 'start'" decoration-warning="state == 'progress'" decoration-bf="1"/>
+    </tree>
+</field>
+</record>
+
+<!-- Form view -->
+<record id="snap_qc_form" model="ir.ui.view">
+    <field name="name">snap.qc.form</field>
+    <field name="model">snap.qc</field>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+            <div class="oe_title">
+            <h1>
+                <field name="name" required="1"/>
+            </h1>  
+            </div>
+            <div class="row">                
+            <div class="col-md-6">
+                <group name="shift">
+                    <field name="tanggal_snap" required="1" readonly="1"/>
+                    <field name="operator" required="1" placeholder="Pilih Operator"/> 
+                    <field name="shift" required="1" placeholder="Pilih Shift"/>  
+                    <field name="putaran" widget="radio" options="{'horizontal': False}"/>                                                         
+                </group>       
+            </div>
+    <!-- Group untuk field line dan blok-->
+    <div class="col-md-6"> 
+        <group name="mesin" string="Pilih Line Mesin">
+            <button>
+                <field name="deret_value" widget="radio" options="{'horizontal' : True}" class="radio-line"/>
+            </button>
+        </group>
+    </div>
+
+    <div class="col-md-6">
+        <group name="total_kerusakkan" string="Total Kerusakkan">
+            <div class="table-responsive-sm">
+            <table class="table table-bordered">
+                <caption>Tabel Total Kerusakkan Hasil Snap</caption>
+                <thead class="table-dark" style="text-align:center;">
+                    <tr>
+                        <th>
+                            <label for ="total_putus_lusi" string="Putus Lusi" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_putus_pakan" string="Putus Pakan" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_bendera_merah" string="Bendera Merah" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_ambrol" string="Ambrol" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_dedel" string="Dedel" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_hb" string="Habis Beam/Beam Baru" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_naik_beam" string="Naik Beam" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_oh" string="Over Houle" readonly="1"/>
+                        </th>
+                        <th> 
+                            <label for ="total_preventif" string="Preventif" readonly="1"/>
+                        </th>
+                        <th>
+                            <label for ="total_lain_lain" string="Lain Lain" readonly="1"/>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table table-sm table-striped" style="text-align:center;">
+                        <td>
+                            <field name="total_putus_lusi" readonly="1"/>
+                        </td> 
+                        <td>
+                            <field name="total_putus_pakan" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_bendera_merah" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_ambrol" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_dedel" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_hb" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_naik_beam" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_oh" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_preventif" readonly="1"/>
+                        </td>
+                        <td>
+                            <field name="total_lain_lain" readonly="1"/>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="table table-sm table-bordered">
+                    <tr>
+                        <td colspan="9" style="background-color:#3498DB; !important;color:#FFF !important;">Total Seluruh Snap</td>
+                        <td style="text-align:center;">
+                            <strong><field name="total_snap"/></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" style="background-color:#b91b1b; !important;color:#FFF !important;">Presentasi Mesin Stop (%)</td>
+                        <td style="text-align:center;">
+                           <strong>
+                            <field name="presentasi_mesin_mati" widget="float" options="{'widget': 'percentage', 'precision': 2}" /> %
+                           </strong> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" style="background-color:#0e9f26; !important;color:#FFF !important;">Presentasi Mesin Jalan (%)</td>
+                        <td style="text-align:center;">
+                            <strong>
+                                <field name="presentasi_mesin_jalan" widget="float" options="{'widget': 'percentage', 'precision': 2}" /> %
+                            </strong>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        </group>
+    </div>
+</div>
+<!-- Page hasil snap, data akan tersimpan disini setelah di save dari pop up form -->
+<notebook> 
+    <page string="Hasil Snap" name="page_hasil_snap">
+        <field name="snap_qc_line" mode="tree">
+            <tree string="Hasil Snap"> 
+                <field name="deret_value"/>
+                <field name="mesin_produksi_id"/>
+                <field name="putus_lusi"/> 
+                <field name="putus_pakan"/> 
+                <field name="bendera_merah"/>
+                <field name="ambrol"/>
+                <field name="dedel"/>
+                <field name="hb"/>
+                <field name="naik_beam"/>
+                <field name="oh"/> 
+                <field name="preventif"/> 
+                <field name="lain_lain"/>  
+            </tree>
+        </field>
+    </page>
+    <page string="Other Information" name="page_mesin_produksi">
+        
+    </page>    
+</notebook>   
+</sheet>
+</form>
+</field>
+</record> 
+
+<!-- Kanban View -->
+<record id="snap_qc_shuttle_kanban_view" model="ir.ui.view">
+    <field name="name">snap.qc.kanban</field>
+    <field name="model">snap.qc</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_mobile" sample="1">
+            <field name="name"/>
+            <field name="operator"/>
+            <field name="date_planned_start"/>
+            <field name="shift"/>
+            <field name="putaran"/>
+            <field name="state" optional="show" widget="badge" 
+            decoration-success="state == 'done'" 
+            decoration-muted="state =='open'" 
+            decoration-danger="state == 'close'"
+            decoration-warning="state == 'progress'"/>
+            <progressbar field="state" colors='{"done": "success", "today": "warning", "cancel": "danger"}'/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                        <div class="o_kanban_record_top">
+                            <field name="priority" widget="priority"/>
+                            <div class="o_kanban_record_headings mt4 ml-1">
+                                <strong class="o_kanban_record_title"><span><t t-esc="record.name.value"/></span></strong>
+                            </div>
+                            <span class="float-right text-right"><t t-esc="record.shift.value"/> <small><t t-esc="record.putaran.value"/></small></span>
+                        </div>
+                        <div class="o_kanban_record_bottom">
+                            <div class="oe_kanban_bottom_left text-muted">
+                                <span><t t-esc="record.operator.value"/></span>
+                            </div>
+                            <div class="oe_kanban_bottom_right">
+                                <span t-attf-class="badge #{['draft', 'cancel'].indexOf(record.state.raw_value) > -1 ? 'badge-danger' : ['confirmed'].indexOf(record.state.raw_value) > -1 ? 'badge-warning' : ['done'].indexOf(record.state.raw_value) > -1 ? 'badge-success' : 'badge-info'}"><t t-esc="record.state.value"/></span>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+<record id="view_snap_qc_graph" model="ir.ui.view">
+    <field name="name">snap.qc.graph</field>
+    <field name="model">snap.qc</field>
+    <field name="arch" type="xml">
+        <graph string="Qc Shuttle" type="line" sample="1">
+            <field name="date_planned_start"/>
+        </graph>
+    </field>
+</record>
+
+<record id="view_snap_qc_shuttle_calender" model="ir.ui.view">
+    <field name="name">snap.qc.calendar</field>
+    <field name="model">snap.qc</field>
+    <field eval="2" name="priority"/>
+    <field name="arch" type="xml">
+        <calendar date_start="date_planned_start" date_stop="date_planned_finished" string="Snap QC" event_limit="5" quick_add="False">
+            <field name="operator" avatar_field="image_128"/>
+            <field name="shift"/>
+            <field name="putaran"/>
+        </calendar>
+    </field>
+</record>
+
+<record id="view_snap_qc_pivot" model="ir.ui.view">
+    <field name="name">snap.qc.pivot</field>
+    <field name="model">snap.qc</field>
+    <field name="arch" type="xml">
+        <pivot string="Snap Qc Shuttle" sample="1">
+            <field name="date_planned_start" type="row"/>
+        </pivot>
+    </field>
+</record>
+
+<record id="snap_qc_menu_action" model="ir.actions.act_window">
+    <field name="name">Snap Qc Shuttle</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_mode">tree,form,calendar,pivot,kanban,graph</field>
+    <field name="res_model">snap.qc</field>
+</record>
+
+<menuitem id="qc_shuttle" name="Snap Shuttle" sequence="116" action="snap_qc_menu_action" web_icon="qc_shuttle,static/description/icon.png"/>
+
+</data>
+</odoo>
+ 

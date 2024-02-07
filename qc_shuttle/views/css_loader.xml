@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="my_custom_css_asset" name="my_custom_css assets" inherit_id="web.assets_backend">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" type="text/css" href="/uw_uj/qc_shuttle/static/src/css/custom_style.css"/>
+        <link rel="stylesheet" type="text/css" href="/uw_uj/qc_shuttle/static/src/css/dashboard.css"/>
+        <link rel="stylesheet" type="text/css" href="/uw_uj/qc_shuttle/static/src/css/radio_custom.css"/>
+        <link rel="stylesheet" type="text/css" href="/uw_uj/qc_shuttle/static/src/css/radio-putaran.css"/>
+      </xpath>
+    </template>
+  </data>
+</odoo>

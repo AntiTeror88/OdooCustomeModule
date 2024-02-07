@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_snap_qc_user,snap.qc.user,model_snap_qc,,1,1,1,1
+access_snap_qc_rapier_user,snap.qc.rapier.user,model_snap_qc_rapier,,1,1,1,1
+access_snap_qc_ajl_user,snap.qc.ajl.user,model_snap_qc_ajl,,1,1,1,1
+access_snap_qc_line_user,snap.qc.line.user,model_snap_qc_line,,1,1,1,1
+

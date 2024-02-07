@@ -1,0 +1,89 @@
+.text-muted strong {
+    font-size: 11px;
+}
+
+.o_kanban_view .o_kanban_group {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding: 0 16px 16px 16px;
+}
+
+.o_kanban_view .o_kanban_record {
+    position: relative;
+    display: inline-block;
+    border-color: #ced4da;
+    min-width: 63px;
+    margin: 0 0 -1px;
+}
+
+/* .o_kanban_view .o_kanban_record .o_kanban_text {
+    white-space: nowrap;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+} */
+
+/* Css Untuk Ngatur Kanban */
+.o_kanban_view.o_kanban_grouped.o_kanban_small_column .o_kanban_group:not(.o_column_folded) {
+    width: 190px;
+    padding: 14px;
+    margin: 0px;
+    line-height: normal;
+}
+
+/* Css Untuk Ngatur Kanban Box (Nomor Mesin & Kode Kain)*/
+.o_kanban_view.o_kanban_grouped .o_kanban_record, .o_kanban_view.o_kanban_grouped .o_kanban_quick_create {
+    width: 46%;
+    margin-left: 0;
+    margin-right: 0px;
+    margin-bottom: 8px;
+    margin-inline: 3px;
+}
+
+/* Css Untuk Ngatur Kanban Header/Title */
+.o_kanban_view .o_kanban_group .o_kanban_header > .o_kanban_header_title .o_column_title {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.o_boolean_toggle.custom-control.custom-checkbox{
+    display: grid;
+    padding-left: 2.6875rem;
+}
+
+.o_kanban_view .oe_kanban_card .o_dropdown_kanban .dropdown-menu, .o_kanban_view .o_kanban_record .o_dropdown_kanban .dropdown-menu {
+    position: absolute;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: -1px;
+    margin-top: -1px;
+    padding: 2px;
+    border-color: #115ba6;
+    right: -9px;
+    min-width: 8rem;
+}
+
+.btn-success:not([disabled]) {
+    background-color: green;
+    color: white;
+}
+
+.btn-success[disabled] {
+    background-color: gray;
+    color: rgb(5, 1, 1);
+}
+
+

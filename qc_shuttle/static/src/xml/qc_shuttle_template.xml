@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+    <t t-name="WidgetQcTemplate">
+        <div>
+            <button class="btn btn-info button_tambah_snap"><i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data Snap</button>
+        </div>
+    </t>
+</template>
