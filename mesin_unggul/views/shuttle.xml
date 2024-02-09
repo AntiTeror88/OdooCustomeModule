@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_mesin_shuttle_tree" model="ir.ui.view">
+			<field name="name">mesin.shuttle.tree</field>
+			<field name="model">mesin.shuttle</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="shuttle">
+					<field name="name"/>
+					<field name="kode_kain"/>
+					<field name="start_date"/>
+				</tree>
+			</field>
+		</record>
+		
+		
+		<record id="view_mesin_shuttle_form" model="ir.ui.view">
+			<field name="name">mesin.shuttle.form</field>
+			<field name="model">mesin.shuttle</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="mesin_shuttle_Form">
+					<sheet>
+						<!-- <div class="oe_title">
+							<label for="name" class="oe_edit_only"
+									string="Data Mesin"/>
+							<h1> 
+								<field name="name"/>
+							</h1>	
+						</div>-->
+						<group>
+							<group>
+								<field name="divisi"/>
+								<field name="name"/>
+							</group>
+							<group>
+								<field name="kode_kain"/>
+								<field name="start_date"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Kerusakan Mesin Shuttle">
+								<field name="rusak">
+									<tree string="Kerusakan Mesin Shuttle" editable="bottom">
+										<field name="no_ids"/>
+										<field name="jenis_mesin"/>
+										<field name="rusak"/>
+										<field name="block"/>
+										<field name="deret"/>
+										<field name="rpm"/>
+										<field name="beam"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					
+					</sheet>
+				</form>
+			</field>
+		</record>
+		-->
+	</data>
+</odoo>

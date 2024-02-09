@@ -1,0 +1,11 @@
+<? xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <data>
+            <report
+                id="report_mesin_produksi_menu"
+                string="M"
+                model="academic.session"
+                report_type="qweb-pdf"
+                file="academic.session"
+                name="academic.session_report"
+            />

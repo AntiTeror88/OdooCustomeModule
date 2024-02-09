@@ -1,0 +1,12 @@
+<? xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="data_produksi_pdf"
+            string="Work Order"
+            model="mrp.workorder"
+            report_type="qweb-pdf"
+            file="data_produksi_report_pdf.data_produksi_pdf"
+            name="data_produksi_report_pdf.data_produksi_pdf"
+            attachdata_produksi_pdfment_use="True"
+        />

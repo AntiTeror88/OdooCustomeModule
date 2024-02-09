@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_kanban_status" model="ir.ui.view">
+        <field name="name">kanban.view.status</field>
+        <field name="model">mesin.produksi</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="deret"  class="o_kanban_small_column" quick_create="false"  on_create="quick_create" create="0">
+                <field name="deret"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <div class="o_dropdown_kanban dropdown">
+                                <a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit...</a></t>
+                                    <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                </div>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <div>
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div class="text-muted">
+                                    <strong><field name="mesin"/></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="mesin_produksi_form" model="ir.ui.view">
+        <field name="name">mesin_produksi_form.form</field>
+        <field name="model">mesin.produksi</field>
+        <field name="arch" type="xml">
+            <form string="Mesin Header">
+                <header>
+                </header>
+                <sheet>
+                    <group name="main_grp_1" colspan="2">
+                    <group>
+                        <field name="name"/>
+                        <field name="mesin"/>
+                        <field name="rpm"/>
+                    </group>
+                    <group>
+                        <field name="deret"/>
+                        <field name="block"/>
+                        <field name="divisi_id"/>
+                    </group>
+                    </group>
+                </sheet> 
+            </form>
+        </field>
+    </record>
+
+    <record id="action_model_kanban" model="ir.actions.act_window">
+        <field name="name">Layout Shuttle</field>
+        <field name="res_model">mesin.produksi</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_kanban_status"/>
+        <field name="context">{'group_by': ['deret']}</field>
+    </record>
+
+</odoo>

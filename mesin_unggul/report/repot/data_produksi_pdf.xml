@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="data_produksi_report_pdf">
+            <t t-call ="report.container">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <div class= "oe_structure">
+                        <div class= "page-hader">
+                        <t t-foreach="get_periods(docs)" t-as="p">
+                            <blockquote>
+                                <p> Periode</p>
+                                <footer><span  t-esc="p"/></footer>
+                            </blockquote>
+                            <table class="table table-striped" >
+                                <tr>
+                                    <!-- isinya field yang akam di tampilkan 
+                                    -->
+                                    <td>nama field</td>
+                                </tr>
+                                <t t-foreach="docs" t-as="p">
+                                    <t t-if= "p == o.period_id.name">
+                                        <td><span t-field="o.name"/></td>
+                                </t>
+                            </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

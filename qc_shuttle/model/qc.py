@@ -17,16 +17,8 @@ class SnapQc(models.Model):
     
     # Relasi ke model mesin.produksi dari modul mesin_unggul(mesin_produksi.py)
     # untuk menampilkan nomor_mesin menggunakan domain field deret.
-    mesin_produksi_id = fields.Many2one('mesin.produksi', string='Mesin Produksi', domain="[('deret', 'in', ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13'])]")
-    deret_value = fields.Selection(string='Line', selection='_get_deret_values', store=True)
-    
-    # Untuk mengurutkan deret dari yang terkecil ke terbesar
-    def _get_deret_values(self):
-        unique_deret_values = self.env['mesin.produksi'].sudo().read_group(
-            [('deret', 'in', ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13'])], 
-            ['deret'], ['deret'], lazy=False
-        )
-        return [(record['deret'], record['deret']) for record in unique_deret_values if record['deret']]
+    mesin_produksi_id = fields.Many2one('mesin.produksi', string='Mesin Produksi')
+    deret = fields.Many2one('deret.mesin.produksi',string="Deret")
     
     # field yang digunakan untuk menampilakn total dari masing masing kerusakkan
     # menggunakan compute
@@ -51,7 +43,7 @@ class SnapQc(models.Model):
             record.total_snap = total_snap   
 
     # field untuk menampilkan total mesin
-    total_mesin = fields.Integer(string='Mesin Total', compute='_compute_total_mesin', store=True)
+    total_mesin = fields.Integer(string='Total Mesin', compute='_compute_total_mesin', store=True)
 
     # Query untuk menampilkan total mesin 
     # yang ada pada model mesin.produksi
@@ -60,52 +52,43 @@ class SnapQc(models.Model):
         for record in self:
             total_mesin = self.env['mesin.produksi'].sudo().search_count([])
 
-            record.total_mesin = total_mesin 
-
-    total_mesin_deret = fields.Integer(string="Total Mesin", compute="_compute_total_mesin_deret")             
-
-    @api.depends('deret_value')
-    def _compute_total_mesin_deret(self):
-        for record in self:
-            total_mesin_deret = self.env['mesin.produksi'].sudo().search_count([
-                ('deret', 'in', ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13'])
-            ])
-            record.total_mesin_deret = total_mesin_deret
+            record.total_mesin = total_mesin       
 
     #field untuk menampilkan presentasi dari mesin yang mati
     presentasi_mesin_mati = fields.Float(string='Presentasi Mesin Mati', compute='_compute_presentasi_mesin_mati', store=True)
 
     # fungsi compute untuk menampilkan presentasi mesin mati
-    @api.depends('total_snap', 'total_mesin_deret')
+    @api.depends('total_snap', 'total_mesin')
     def _compute_presentasi_mesin_mati(self):
         for record in self:
-            if record.total_mesin_deret != 0:
-                presentasi_mesin_mati = (record.total_snap / record.total_mesin_deret) * 100
+            if record.total_mesin != 0:
+                presentasi_mesin_mati = (record.total_snap / record.total_mesin) * 100
             else:
                 presentasi_mesin_mati = 0
+
             record.presentasi_mesin_mati = presentasi_mesin_mati
-    
+ 
     # field yang berfungsi untuk menampilkan mesin yang berjalan
     total_mesin_jalan = fields.Integer(string='Total Mesin Jalan', compute='_compute_total_mesin_jalan', store=True)
-    
+
     # compute untuk menampilkan total mesin yang jalan
-    @api.depends('total_mesin_deret', 'total_snap')
+    @api.depends('total_mesin', 'total_snap')
     def _compute_total_mesin_jalan(self):
         for record in self:
-            total_mesin_jalan = record.total_mesin_deret - record.total_snap
+            total_mesin_jalan = record.total_mesin - record.total_snap
             record.total_mesin_jalan = total_mesin_jalan
 
     # field yang berfungsi untuk menampilkan presentasi dari mesin jalan
     presentasi_mesin_jalan = fields.Float(string='Presentasi Mesin Jalan', compute='_compute_presentasi_mesin_jalan', store=True)
 
     # compute untuk menampilkan presentasi mesin jalan
-    @api.depends('total_snap', 'total_mesin_deret')
+    @api.depends('total_snap', 'total_mesin')
     def _compute_presentasi_mesin_jalan(self):
         for record in self:
-            total_mesin_deret = record.total_mesin_deret
+            total_mesin = record.total_mesin
             total_snap = record.total_snap
 
-            record.presentasi_mesin_jalan = (total_mesin_deret - total_snap) / total_mesin_deret * 100 if total_mesin_deret != 0 else 0
+            record.presentasi_mesin_jalan = (total_mesin - total_snap) / total_mesin * 100 if total_mesin != 0 else 0
     
     shift = fields.Selection([
         ('1', 'Shift A'),
@@ -179,7 +162,7 @@ class SnapQc(models.Model):
         for record in self:
             if record.date_planned_start:
                 record.date_deadline = record.date_planned_start + timedelta(hours=8)
-    
+
     @api.model
     def _get_default_date_planned_finished(self):
         if self.env.context.get('default_date_planned_start'):
@@ -325,7 +308,8 @@ class SnapQcLine(models.Model):
     
     # Relasi ke model mesin.produksi dari modul mesin_unggul (mesin_produksi.py)
     # untuk menampilkan data mesin dari model mesin_produksi (Mesin Unggul).
-    mesin_produksi_id = fields.Many2one('mesin.produksi', string='Nomor Mesin', domain="[('deret', '=', line_mesin)]")
+    mesin_produksi_id = fields.Many2one('mesin.produksi', string='Mesin Produksi')
+    deret = fields.Many2one('deret.mesin.produksi',string="Deret")
     
     #Field Tanggal 
     tanggal_snap = fields.Date(string="Tanggal Snap", default=fields.Date.context_today)
@@ -342,12 +326,15 @@ class SnapQcLine(models.Model):
     preventif = fields.Boolean(string="Preventif")
     lain_lain  =  fields.Text(string="Lain Lain")
     keterangan = fields.Text(string="Keterangan") 
- 
-    line_mesin = fields.Char(string="Deret", onchange="_onchange_mesin_produksi_id")
 
+    line_mesin = fields.Char(string="Deret", onchange="_onchange_mesin_produksi_id")
+    
     @api.onchange('mesin_produksi_id')
     def _onchange_mesin_produksi_id(self):
         if self.mesin_produksi_id:
             self.line_mesin = self.mesin_produksi_id.deret
         else:
             self.line_mesin = False
+
+
+     

@@ -16,7 +16,7 @@
                             <div class="col-md-8">
                                 <div class="radio-mesin">
                                     <group name="layout_mesin" string="Layout Mesin">
-                                        <field name="mesin_produksi_id" domain="[('deret', '=', parent.deret_value)]" options="{'horizontal': True}" widget="radio" class="custom-control custom-radio o_radio_item"/>                                        
+                                        <field name="mesin_produksi_id" domain="[('deret', '=', parent.deret)]" options="{'horizontal': True}" widget="radio" class="radio-mesin"/>                                        
                                     </group>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </sheet>
-                </form>  
+                </form> 
             </field>
         </record> 
     </data>

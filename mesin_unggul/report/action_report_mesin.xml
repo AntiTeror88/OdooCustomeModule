@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Adding a print_report_name field inside to the report action form view -->
+        <!-- Report Id  harus beda, file ambil dari addons yang ditempati, string nama action print, 
+        model diambil meodel yang diambil action print yang dituju, 
+        file adalah nama addons yang ditempati dan disambung dot(.)nama addons yang kita buat
+        name adalah nama addon kita , dan disambung deklarasi doc yang kita buat-->
+        <report id="report_data_kerusakan_menu" 
+                string="Report Kerusakan Mesin" 
+                model="mesin.shuttle" 
+                report_type="qweb-pdf" 
+                file="msn_produksi_unggul.action_report_mesin" 
+                name="msn_produksi_unggul.report_mesin"/>
+        
+        <template id="report_mesin">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="msn_produksi_unggul.report_mesin_shuttle" t-lang="doc.create_uid.lang"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

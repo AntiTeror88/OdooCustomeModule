@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_mesin_produksi_search" model="ir.ui.view">
+            <field name="name">mesin.produksi.select</field>
+            <field name="model">mesin.produksi</field>
+            <!-- <field name="act_window_id" ref="action_action_isian_list"/> -->
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="mesin"/>
+                    <field name="divisi_id"/>
+                    <filter name="reference" string='No Mesin'/>
+                </search>
+            </field>
+        </record>
+		<record id="view_mesin_produksi_tree" model="ir.ui.view">
+			<field name="name">mesin.produksi.tree</field>
+			<field name="model">mesin.produksi</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="produksi">
+					<field name="name"/>
+					<field name="mesin"/>
+					<field name="divisi_id"/>
+					<field name="block"/>
+					<field name="deret"/>
+					<field name="rpm"/>
+					<field name='state'/>
+					
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_mesin_produksi_form" model="ir.ui.view">
+			<field name="name">mesin.produksi.form</field>
+			<field name="model">mesin.produksi</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="mesin_produksi Form">
+					<sheet>
+						<h2>Data Mesin Produksi</h2>
+						<group>
+							<group>
+								<!--<field name="user"/>-->
+								<field name="name"/>
+								<field name="mesin"/>
+								<field name="divisi_id"/>
+							</group>
+							<group>
+								<field name="block"/>
+								<field name="deret"/>
+								<field name="rpm"/>
+								<!-- <field name="total_mesin"/> -->
+								<!-- <field name='no_kp'/> -->
+								<!-- <field name='product_tmpl_id'/> -->
+							</group>
+						</group>
+						<!-- belum dipakai 
+						<notebook>
+							<page string="Description">
+							<field name="description"/>
+							</page>
+						</notebook>
+						-->
+					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_mesin_rapier_tree" model="ir.ui.view">
+			<field name="name">mesin.rapier.tree</field>
+			<field name="model">mesin.rapier</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="rapier">
+					<field name="mo"/>
+					<field name="name"/>
+					<field name="produk"/>
+					<field name="start_date"/>
+				<!--<field name= "time"/>
+					<field name="rusak_mesin2"/>
+					<field name="rusak_mesin3"/>
+					<field name= "rusak_ele1"/>
+					<field name= "rusak_ele2"/>
+					<field name= "rusak_ele3"/>
+					<field name= "rusak_assesoris1"/>
+					<field name= "rusak_assesoris2"/>
+					<field name= "rusak_assesoris3"/>-->				
+				</tree>
+			</field>
+		</record>
+		
+	
+		<record id="view_mesin_rapier_form" model="ir.ui.view">
+			<field name="name">mesin.rapier.form</field>
+			<field name="model">mesin.rapier</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="mesin_rapier_Form">
+					<sheet>
+					<!--	<<div class="oe_title">
+							<label for="name" class="oe_edit_only"
+									string="Data Mesin"/>
+							<h1> 
+								<field name="name"/>
+							</h1>	
+						</div> -->
+						<group>
+							<group>
+								<field name="mo"/>
+								<field name="produk"/>
+								<field name="start_date"/>
+								<field name="name"/>
+							</group>
+							<group>
+								<!--<field name="deret"/>-->
+								
+								
+								<!--<field name="time"/>-->
+							</group>
+						</group>
+						<notebook>
+							<page string="Macam Kerusakan Mekanik">
+								<field name= "rusak_mesin1">
+									<tree string="Macam Kerusakan Mekanik" editable="bottom">
+										<field name="no_id"/>
+										<field name="jenis_mesin"/>
+                                    	<field name="kerusakan"/>
+										<field name="elektrik"/>
+										<field name="mesin"/>
+										<field name="rpm"/>
+										<field name="beam"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					<!--	<notebook>
+							<page string="Macam Kerusakan Mekanik">
+								<group>	
+									<field name="rusak_mesin1"/>
+									<field name="rusak_mesin2"/>
+									<field name="rusak_mesin3"/>
+								</group>
+
+							</page>
+							<page string="Macam Kerusakan Elektrik">
+								<group>
+									<field name= "rusak_ele1"/>
+									<field name= "rusak_ele2"/>
+									<field name= "rusak_ele3"/>
+								</group>
+							</page>
+							<page string="Macam Kerusakan Assesoris">
+								<group>
+									<field name= "rusak_assesoris1"/>
+									<field name= "rusak_assesoris2"/>
+									<field name= "rusak_assesoris3"/>
+								</group>
+							</page>
+						</notebook> -->
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

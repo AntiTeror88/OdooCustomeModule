@@ -6,7 +6,7 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <h2 style="text-align: center; text-decoration:underline; border-bottom: 1px solid #000; font-weight:bold;"> CHECKLIST SNAP DIVISI SHUTTLE</h2>
-                        <h5 style="text-alignt:left; font-size:18px; font-weight:bold; font-variant: small-caps;"> Pembagi : <span t-field="doc.total_mesin_deret"/> Mesin (Total Mesin Shuttle)</h5>
+                        <h5 style="text-alignt:left; font-size:18px; font-weight:bold; font-variant: small-caps;"> Pembagi : <span t-field="doc.total_mesin"/> Mesin (Total Mesin Keseluruhan)</h5>
                         <div style=" background-color:  #3498DB; ">
                                 <h2 style="color: #fff;"> <span t-field="doc.name"/></h2>
                             <div style=" background-color:  #3498DB;">
@@ -59,7 +59,7 @@
                             <tbody class="snap_tbody">
                                 <tr t-foreach="doc.snap_qc_line" t-as="l" style="text-align:center;">
                                     <td style="text-align:center;">
-                                        <span t-field="doc.deret_value"/>
+                                        <span t-field="l.line_mesin"/>
                                     </td>
                                     <td style="text-align:center;">
                                         <span t-field="l.mesin_produksi_id"/>

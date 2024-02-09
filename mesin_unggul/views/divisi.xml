@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_data_divisi_tree" model="ir.ui.view">
+			<field name="name">divisi.divisi.tree</field>
+			<field name="model">divisi.divisi</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="Data Divisi">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+	
+		<record id="view_data_divisi_form" model="ir.ui.view">
+			<field name="name">divisi.divisi.from</field>
+			<field name="model">divisi.divisi</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form string="Data Divisi">
+					<sheet>
+						<!-- <div class="oe_title">
+							<label form="name" class="oe_edit_only"
+									string="Data Divisi"/>
+						</div>	 -->
+						<group>
+							<group>
+								<field name="name"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_deret_mesin_tree" model="ir.ui.view">
+			<field name="name">deret.mesin.tree</field>
+			<field name="model">deret.mesin.produksi</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<tree string="produksi">
+					<field name="nama_deret"/>
+					<field name="total_mesin"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="view_deret_mesin_form" model="ir.ui.view">
+			<field name="name">deret.mesin.form</field>
+			<field name="model">deret.mesin.produksi</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<field name="nama_deret"/>
+						<field name="total_mesin"/>
+					</sheet>
+				</form>
+			</field>
+		</record>
+    </data>
+</odoo>

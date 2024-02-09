@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<odoo>
+		<data>
+			<record id="action_produksi_list" model="ir.actions.act_window">
+				<field name="name">Daftar Mesin Produksi</field>
+				<field name="res_model">mesin.produksi</field>
+				<field name="view_mode">tree,form,pivot,graph</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a Mesin Produksi
+					</p>
+					<p>klik tombol create untuk bikin Mesin Produksi Baru</p>
+				</field>
+			</record>
+
+			<record id="action_divisi_list" model="ir.actions.act_window">
+				<field name="name">Divisi</field>
+				<field name="res_model">divisi.divisi</field>
+				<field name="view_mode">tree,form,pivot,graph</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a Divisi
+					</p>
+					<p>Klik Tombol Create Tambah Divisi</p>
+				</field>
+			</record>
+			
+			<record id="action_beam_list" model="ir.actions.act_window">
+				<field name="name">No Beam</field>
+				<field name="res_model">nomor.beam</field>
+				<field name="view_mode">tree,form,pivot</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a Data Beam
+					</p>
+					<p>klik tombol create untuk bikin Data Beam baru</p>
+				</field>
+			</record>
+			
+			<record id="action_lokasi_list" model="ir.actions.act_window">
+				<field name="name">Daftar Lokasi </field>
+				<field name="res_model">loc.tem</field>
+				<field name="view_mode">tree,form,pivot</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a Lokasi 
+					</p>
+					<p>klik tombol create untuk bikin Lokas</p>
+				</field>
+			</record>
+
+			<record id="action_blok_mesin" model="ir.actions.act_window">
+				<field name="name">Blok Mesin</field>
+				<field name="res_model">blok.mesin.produksi</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a Blok Mesin 
+					</p>
+					<p>klik tombol create untuk tambah blok mesin</p>
+				</field>
+			</record>
+
+			<record id="action_deret_mesin" model="ir.actions.act_window">
+				<field name="name">Deret Mesin</field>
+				<field name="res_model">deret.mesin.produksi</field>
+				<field name="view_mode">tree,form</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a Deret Mesin 
+					</p>
+					<p>klik tombol create untuk tambah deret mesin</p>
+				</field>
+			</record>
+
+		<!-- 	<record id="action_rapier_list" model="ir.actions.act_window">
+				<field name="name">Daftar Kerusakan Mesin Rapier</field>
+				<field name="res_model">mesin.rapier</field>
+				<field name="view_mode">tree,form,group,pivo</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a Kerusakan Rapier
+					</p>
+					<p>klik tombol create untuk bikin Kerusakan Rapier baru</p>
+				</field>
+			</record> -->
+
+			<!-- <record id="action_bs_list" model="ir.actions.act_window">
+				<field name="name">Daftar BS</field>
+				<field name="res_model">data.bs</field>
+				<field name="view_mode">tree,form,group,pivo,group,pivot</field>
+				<field name="help" type="html">
+					<p class="oe_view_nocontent_create">
+							Click to add a BS
+					</p>
+					<p>Klik Tombol Create Untuk Bikin Data BS Kain</p>
+				</field>
+			</record> -->
+			
+			<menuitem id="mesin_0" 
+					name="Data Mesin"
+					web_icon="mesin_unggul,static/description/data_mesin.png" 
+					sequence="115"/>
+			<menuitem id="mesin_1" 
+					name="Mesin" 
+					parent="mesin_0" 
+					sequence="50"/>
+			<menuitem id="menu_mesin_produksi" 
+					name="Mesin Produksi" 
+					parent="mesin_1" 
+					action="action_produksi_list" 
+					sequence="50"/>
+			<menuitem id="blok_mesin_produksi" 
+					name="Blok Mesin" 
+					parent="mesin_1" 
+					action="action_blok_mesin" 
+					sequence="92"/>		
+			<menuitem id="deret_mesin_produksi" 
+					name="Deret Mesin" 
+					parent="mesin_1" 
+					action="action_deret_mesin" 
+					sequence="102"/>	
+
+
+			<menuitem id="divisi_1" 
+					name="Divisi" 
+					parent="mesin_0" 
+					sequence="60"/>
+			<menuitem id="divisi_2" 
+					name="Data Divisi" 
+					parent="divisi_1" 
+					action="action_divisi_list" 
+					sequence="60"/>
+				
+			<menuitem id="menu_beam_1" 
+					parent="mesin_0"
+					name="Data Beam" 
+					sequence="70"/>				
+			<menuitem id="menu_beam_2" 
+					name="No Beam" 
+					parent="menu_beam_1" 
+					action="action_beam_list"
+					sequence="70"/>
+		
+			<menuitem id="menu_lokasi" 
+					name="Lokasi" 
+					parent="mesin_0"
+					sequence="80"/>
+			<menuitem id="menu_lokasi_produksi" 
+					name="Lokasi" 
+					parent="menu_lokasi"
+					action="action_lokasi_list"
+					sequence="82"/>
+			<!-- <menuitem id="menu_mesin_shuttle" 
+					name=" Mesin Stop Shuttle" 
+					parent="menu_mesin_kerusakan" 
+					action="action_shuttle_list" 
+					sequence="80"/>
+			<menuitem id="menu_mesin_rapier" 
+					name="Mesin Stop Rapier" 
+					parent="menu_mesin_kerusakan" 
+					action="action_rapier_list" 
+					sequence="80"/> -->
+
+			<!-- <menuitem id="menu_bs_0" 
+					name="Pengelolaan BS" 
+					sequence="200"/>
+			<menuitem id="menu_bs_1" 
+					name="BS" 
+					parent="menu_bs_0" 
+					sequence="50"/>
+			<menuitem id="menu_bs_kain" 
+					name="BS Campur"
+					parent="menu_bs_1" 
+					action="action_bs_list" 
+					sequence="50"/>	 -->
+		</data>
+	</odoo>	

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="product_product">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h2>Production Order # : <span t-field="o.name"/></h2>
+                        </div>
+                        <div class="col-xs-6">
+                            <span class="text-right">
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('code128', o.name, 600, 100)" style="width:60px;height:60px"/>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nomor_beam_all,access_nomor_beam all,model_nomor_beam,mrp.group_mrp_user,1,1,1,1
+access_divisi_divisi_all,access_divisi_divisi all,model_divisi_divisi,mrp.group_mrp_user,1,1,1,1
+access_mesin_produksi_all,access_mesin_produksi all,model_mesin_produksi,mrp.group_mrp_user,1,1,1,1
+access_loc_tem_all,access_loc_tem all,model_loc_tem,mrp.group_mrp_user,1,1,1,1
+access_blok_mesin_produksi_all,access_blok_mesin_produksi all,model_blok_mesin_produksi,mrp.group_mrp_user,1,1,1,1
+access_deret_mesin_produksi_all,access_deret_mesin_produksi all,model_deret_mesin_produksi,mrp.group_mrp_user,1,1,1,1

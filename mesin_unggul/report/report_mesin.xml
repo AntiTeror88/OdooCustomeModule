@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_mesin_shuttle">
+            <t t-call="report.html_container">
+                <!--<t t-foreach="docs" t-as="o"> jika membuat sendiri harus didefinisikan bukan o dan tidak 
+                menggunakan t-forech karena tidak looping data namun jika mau luping data maka bisa menggunakan loopin data
+            -->
+                <t t-foreach="doc" t-as="o">
+                    <t t-call="report.internal_layout">
+                        <div class="page">
+                            <div class="row">
+                                <h2>Data Mesin : SHUTTLE 
+                                    <span t-field="o.divisi"/>
+                                </h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <strong>No Mesin:</strong><br/>
+                                <span t-field="o.no_ids"/>
+                            </div>
+                            <div class="col-xs-2">
+                                <strong>Kode Kain:</strong><br/>
+                                <span t-field="o.kode_kain"/>
+                            </div>
+                            <div class="col-xs-2">
+                                    <td>Start Date</td>
+                                    <td><span t-field="o.start_date" 
+                                    t-field-options='{"format": "dd-MMM-yyyy"}' /></td>
+                            </div>
+                            <div class="col-xs-6">
+                                <strong>Kerusakan:</strong><br/>
+                                <span t-field="o.kerusakan" t-field-option='{text}'/>
+                            </div>
+                            <!--<div class="col-xs-3">
+                                <strong>Tanggal:</strong></br>
+                                <span t-field="o.start_date" t-field-options='{"format": "dd-MMM-yyyy"}' ></span>
+                            </div>-->
+                           <!--
+                            <div class="col-xs-3">
+                                <strong>Star Date:</strong><br/>
+                                <span t-field="o.star_date"/>
+                            </div>
+                            -->
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
