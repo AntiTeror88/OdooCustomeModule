@@ -43,11 +43,16 @@
             </div>
     <!-- Group untuk field line dan blok-->
     <div class="col-md-6"> 
-        <group name="mesin" string="Pilih Line Mesin">
+        <group name="mesin" string="Line Mesin Shuttle">
             <button>
                 <field name="deret" widget="radio" options="{'horizontal' : True}" class="radio-line"/>
             </button>
         </group>
+        <!-- <group name="mesin" string="Line Mesin AJL">
+            <button>
+                <field name="deret" widget="radio" options="{'horizontal' : True}" class="radio-line"/>
+            </button>
+        </group> -->
     </div>
 
     <div class="col-md-6">

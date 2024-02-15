@@ -24,11 +24,10 @@
 					<field name="name"/>
 					<field name="mesin"/>
 					<field name="divisi_id"/>
-					<field name="block"/>
-					<field name="deret"/>
+					<field name="blok_mesin_id"/>
+					<field name="deret_mesin_id"/>
 					<field name="rpm"/>
 					<field name='state'/>
-					
 				</tree>
 			</field>
 		</record>
@@ -50,8 +49,8 @@
 								<field name="divisi_id"/>
 							</group>
 							<group>
-								<field name="block"/>
-								<field name="deret"/>
+								<field name="blok_mesin_id"/>
+								<field name="deret_mesin_id"/>
 								<field name="rpm"/>
 								<!-- <field name="total_mesin"/> -->
 								<!-- <field name='no_kp'/> -->

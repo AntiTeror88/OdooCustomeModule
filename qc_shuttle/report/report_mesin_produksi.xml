@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <template id="mesin_produksi_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div style="padding-top:30px;">
+                                <t t-set="display_discount" t-value="name"/>
+                                <h3>Informasi Mesin</h3>
+                                <table class="table table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="background-color:#3498DB !important;color:#FFF !important;">Nomor Mesin</th>
+                                            <th style="background-color:#3498DB !important;color:#FFF !important;">Kode Kain</th>
+                                            <th style="background-color:#3498DB !important;color:#FFF !important;">Deret</th>
+                                            <th style="background-color:#3498DB !important;color:#FFF !important;">Blok</th>
+                                            <th style="background-color:#3498DB !important;color:#FFF !important;">Divisi</th>
+                                            <th style="background-color:#3498DB !important;color:#FFF !important;">Rpm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="snap_tbody">
+                                        <tr t-foreach="doc.data_mesin_produksi" t-as="l" >
+                                            <td>
+                                                <span t-field="l.nomor_mesin"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="l.kodekain"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="l.line_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="l.blok_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="l.divisi_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="l.rpm"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                        </div>
+                    </t>
+                </t>
+            </t>    
+        </template>
+        <template id="report_mesin_produksi">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="qc_shuttle.mesin_produksi_report">
+    
+                    </t>
+                </t>
+            </t>
+    </template>
+    
+</odoo>

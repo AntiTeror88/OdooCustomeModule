@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    <record id="view_data_mesin_search" model="ir.ui.view">
+        <field name="name">data.mesin.select</field>
+        <field name="model">mesin.produksi</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel>
+                  
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <!-- Mesin Action -->
+    <record id="data_mesin_produksi_action" model="ir.actions.act_window">
+        <field name="name">Data Mesin</field>
+        <field name="res_model">mesin.produksi</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click Create to add a Data Mesin Produksi
+            </p>
+            <p>Klik Tombol Create Untuk Tambah Mesin Produksi</p>
+        </field>
+    </record>
+    
+    <!-- Mesin  Form-->
+    <record id="data_mesin_produksi_form" model="ir.ui.view">
+        <field name="name">data_mesin_form</field>
+        <field name="model">mesin.produksi</field>
+        <field name="arch" type="xml">
+            <form string="Mesin Header">
+                <header>
+                    <button name="action_open" string="Kosong" type="object" class="btn btn-outline-dark"/>
+                    <button name="action_progress" string="Proses Naik Beam" type="object" class="btn btn-outline-warning"/>
+                    <button name="action_done" string="Mesin Jalan" type="object" class="btn btn-outline-success"/>
+                    <button name="action_close" string="Cancel" type="object" class="btn btn-outline-danger"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,progress,done,close"/>
+                </header>
+                <sheet>
+                    <field name="image" 
+                           widget="image" 
+                           class="oe_avatar"/>
+                           
+                <div class="oe_title">
+                    <label for="name" string="Nomor Mesin" />
+                    <h1>
+                        <field name="name" required="1"/>
+                    </h1>
+                </div>    
+                    <group name="main_grp_1" colspan="2">
+                    <group>
+                        <field name="mesin"/>
+                        <field name="rpm"/>
+                    </group>
+                    <group>
+                        <field name="deret" required="1"/>
+                        <field name="block" required="1"/>
+                        <field name="divisi_id"/>
+                        <!-- <field name="reference"/> -->
+                    </group>
+                    </group>
+                </sheet> 
+            </form>
+        </field>
+    </record>
+
+    <!-- Mesin Tree -->
+    <record id="data_mesin_produksi_tree" model="ir.ui.view">
+        <field name="name">data_mesin_produksi_tree</field>
+        <field name="model">mesin.produksi</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="name"/>
+                <field name="mesin"/>
+                <field name="deret"/>
+                <field name="block"/>
+                <field name="divisi_id"/>
+                <field name="rpm"/>
+                <field name="state" optional="show" widget="badge" 
+                decoration-success="state == 'done'" 
+                decoration-muted="state == 'open'" 
+                decoration-danger="state == 'close'"
+                decoration-primary="state == 'progress'"/>
+            </tree>
+        </field>
+        </record>
+    </data>
+</odoo>

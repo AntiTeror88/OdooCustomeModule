@@ -18,12 +18,13 @@ class SnapQc(models.Model):
     # Relasi ke model mesin.produksi dari modul mesin_unggul(mesin_produksi.py)
     # untuk menampilkan nomor_mesin menggunakan domain field deret.
     mesin_produksi_id = fields.Many2one('mesin.produksi', string='Mesin Produksi')
-    deret = fields.Many2one('deret.mesin.produksi',string="Deret")
-    
+    deret = fields.Many2one('deret.mesin.produksi',
+    string="Deret",domain="[('nama_deret', 'like', 'LINE SHUTTLE%')]")
+
     # field yang digunakan untuk menampilakn total dari masing masing kerusakkan
     # menggunakan compute
     total_snap=fields.Integer(string="Total Snap", compute='_compute_total_snap')  
-
+    
     # Fungsi untuk menampilkan total snap dari masing masing kerusakkan
     @api.depends('snap_qc_line.putus_pakan', 'snap_qc_line.putus_lusi', 'snap_qc_line.ambrol', 'snap_qc_line.dedel', 'snap_qc_line.preventif', 'snap_qc_line.oh', 'snap_qc_line.naik_beam', 'snap_qc_line.hb', 'snap_qc_line.bendera_merah', 'snap_qc_line.lain_lain')
     def _compute_total_snap(self):
@@ -248,7 +249,7 @@ class SnapQc(models.Model):
     rata_rata_oh = fields.Float(string='Rata-rata Over Houle', compute='_compute_rata_rata_oh', store=True)
     rata_rata_preventif = fields.Float(string='Rata-rata Preventif', compute='_compute_rata_rata_preventif', store=True)
     rata_rata_lain_lain = fields.Float(string='Rata-rata Lain Lain', compute='_compute_rata_rata_lain_lain', store=True)
-
+    
     @api.depends('total_putus_lusi', 'total_mesin')
     def _compute_rata_rata_putus_lusi(self):
         for record in self:
@@ -326,7 +327,7 @@ class SnapQcLine(models.Model):
     preventif = fields.Boolean(string="Preventif")
     lain_lain  =  fields.Text(string="Lain Lain")
     keterangan = fields.Text(string="Keterangan") 
-
+    
     line_mesin = fields.Char(string="Deret", onchange="_onchange_mesin_produksi_id")
     
     @api.onchange('mesin_produksi_id')
@@ -337,4 +338,4 @@ class SnapQcLine(models.Model):
             self.line_mesin = False
 
 
-     
+    

@@ -22,8 +22,12 @@
 			<field name="arch" type="xml">
 				<form>
 					<sheet>
-						<field name="nama_deret"/>
-						<field name="total_mesin"/>
+						<group>
+							<field name="nama_deret"/>
+						</group>
+						<group>
+							<field name="total_mesin"/>
+						</group>
 					</sheet>
 				</form>
 			</field>

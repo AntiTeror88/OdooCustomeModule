@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Kode Kain Action -->
+        <record id="kode_kain_action" model="ir.actions.act_window">
+            <field name="name">Kode Kain</field>
+            <field name="res_model">kode.kain</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Create to add a Kode Kain
+                </p>
+                <p>Klik Tombol Create Untuk Tambah Kode Kain</p>
+            </field>
+        </record>
+
+        <!-- Kode Kain Form View -->
+        <record id="kode_kain_form" model="ir.ui.view">
+            <field name="name">kode_kain.form</field>
+            <field name="model">kode.kain</field>
+            <field name="arch" type="xml">
+                <form string="Kode Kain Header">
+                    <sheet>
+                        <group>
+                            <field name="kode_kain"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Kode Kain Tree View -->
+        <record id="kode_kain_tree" model="ir.ui.view">
+            <field name="name">kode_kain.tree</field>
+            <field name="model">kode.kain</field>
+            <field name="arch" type="xml">
+             <tree>
+                <field name="kode_kain"/>
+             </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

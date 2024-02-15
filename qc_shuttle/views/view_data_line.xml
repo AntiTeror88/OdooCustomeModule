@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Line Action -->
+        <record id="line_mesin_produksi_action" model="ir.actions.act_window">
+            <field name="name">Line</field>
+            <field name="res_model">line.mesin.produksi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Create to add a Line Mesin Produksi
+                </p>
+                <p>Klik Tombol Create Untuk Tambah Line Mesin Produksi</p>
+            </field>
+        </record>
+
+        <!-- Line Form View -->
+        <record id="line_mesin_produksi_form" model="ir.ui.view">
+            <field name="name">line_mesin_produksi.form</field>
+            <field name="model">line.mesin.produksi</field>
+            <field name="arch" type="xml">
+                <form string="Mesin Header">
+                    <sheet>
+                        <group>
+                            <field name="line"/>
+                            <field name="total_mesin"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Line Tree View -->
+        <record id="line_mesin_produksi_tree" model="ir.ui.view">
+            <field name="name">line_mesin_produksi.tree</field>
+            <field name="model">line.mesin.produksi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="line"/>
+                    <field name="total_mesin"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>
